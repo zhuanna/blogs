@@ -1,0 +1,26 @@
+元素在iPhone safari上用代理（on） 添加事件的bug
+
+document > body > div > p > span
+
+第一种解决方案
+
+1 在以上五个元素中，给span添加on(document)代理事件，其它四个添加事件监听，
+结果，所有事件都影响
+
+2 在span添加on(document)代理事件, document,body监听事件不执行
+
+3 在span添加on(body)代理事件, document,body监听事件不执行
+
+4 在span的添加on(body以内，不是body)代理事件,document,body监听事件执行
+
+方法：按第4步
+
+结果说明：在iPhone safari上代理事件冒泡是到顶端的，但事件监听逐级传递，document和body只有在子元素有事件监听的情况下，才会接收事件冒泡。
+
+第二种解决方案
+
+在span加cursor:pointer
+
+第三种解决方案
+
+在span父级添加监听一个空事件
