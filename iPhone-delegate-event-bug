@@ -4,14 +4,14 @@ document > body > div > p > span
 
 第一种解决方案
 
-1 在以上五个元素中，给span添加on(document)代理事件，其它四个添加事件监听，
-结果，所有事件都影响
+1 在以上五个元素中，给span添加on(document)代理事件，其它四个添加事件监听(on)，
+结果，所有事件都执行
 
 2 在span添加on(document)代理事件, document,body监听事件不执行
 
 3 在span添加on(body)代理事件, document,body监听事件不执行
 
-4 在span的添加on(body以内，不是body)代理事件,document,body监听事件执行
+4 在span添加on(body以内，不含body)代理事件,document,body监听事件执行
 
 方法：按第4步
 
@@ -23,4 +23,4 @@ document > body > div > p > span
 
 第三种解决方案
 
-在span父级添加监听一个空事件
+在span父级添加监听一个空事件,利用了document,body子级有事件监听，冒泡到document,body
