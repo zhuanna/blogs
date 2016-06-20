@@ -1,0 +1,28 @@
+图片上传与裁切
+使用插件: ajaxfileupload ,  Jcrop
+实现方法：通过ajaxfileuplod上传本地的图片到服务器，上传的的同时读取本地图片进行裁切，ie下出现无法透明显示裁切区域的问题。
+
+解决线路：Jcrop是通过两层图片叠加实现的图片的区域高亮显示，
+		 检查图片的显示情况，发现有一层img不显示
+		 原因在于图片的base64编码错误，
+		 寻找将图片编码为字符串的base64js程序，发现网上基本是php+js
+—————由于浏览器的安全机制，浏览器在读取本地图片的时候都要经过编码才能在页面上显示，谷歌等浏览器支持FileReader,
+通过readAsDataURL可以得到64位编码的图片信息，
+		var file = document.getElementById(id);//input type=file的元素
+		var newFile = file.files[0];
+		var reader = new FileReader();
+  		reader.readAsDataURL(newFile);
+  		reader.onload = function (e) {
+  		pic.src = this.result;
+  			//裁切
+		}
+——————在ie浏览器下即不支持canvas，也不支持FileReader, 也Activex插件实现（需要用户改权限才能使用），
+改为在ie浏览器下读取服务器的图片地址，会出现暂的图片上传等待，在wifi的情况下通常为1-5s。
+		var file = document.getElementById(id);
+		var isIE = navigator.userAgent.match(/MSIE/) != null;
+		if (isIE) {
+		  pic.src = //ajaxFileupload发出的ajax返回的图片地址
+		  pic.onload = function(){
+		    //裁切
+		  };
+		}
