@@ -1,1 +1,1 @@
-It's just some messages'share of dairy work.
+用git当记录本！
