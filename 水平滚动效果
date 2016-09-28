@@ -1,0 +1,14 @@
+1.外容器relateCommendVideo，设置overflow-x: scroll;-webkit-overflow-scrolling: touch;
+2.内容器relateCommendVideoInner默认设置大宽度
+
+.relateCommendVideo{
+    padding:10px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    margin-top:10px;
+}
+.relateCommendVideoInner{
+    width:2000px;
+}
