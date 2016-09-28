@@ -1,5 +1,6 @@
 1.外容器relateCommendVideo，设置overflow-x: scroll;-webkit-overflow-scrolling: touch;
 2.内容器relateCommendVideoInner默认设置大宽度
+3.子级设置不折行
 
 .relateCommendVideo{
     padding:10px;
@@ -11,4 +12,10 @@
 }
 .relateCommendVideoInner{
     width:2000px;
+}
+.relateCommendVideoInner li{
+    float:left;
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+    margin-right: 15px;
 }
